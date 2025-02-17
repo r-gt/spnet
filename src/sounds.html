@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🥑</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .sound-button {
+      margin: 10px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4CAF50;
+      color: #fff;
+      cursor: pointer;
+    }
+    .sound-button:hover {
+      background-color: #3e8e41;
+    }
+  </style>
+</head>
+<body>
+  <h1>🥑</h1>
+  <div class="sound-grid">
+    <!-- Sound buttons will be generated here -->
+  </div>
+
+  <script>
+    // Get the sound grid element
+    const soundGrid = document.querySelector('.sound-grid');
+
+    // Get the list of sound files from the server
+    fetch('/sounds')
+      .then(response => response.json())
+      .then(sounds => {
+        // Generate sound buttons for each sound file
+        sounds.forEach(sound => {
+          const button = document.createElement('button');
+          button.classList.add('sound-button');
+          button.textContent = sound.name;
+          button.addEventListener('click', () => {
+            // Play the sound when the button is clicked
+            fetch(`/play/${sound.id}`)
+              .then(response => response.text())
+              .then(message => console.log(message));
+          });
+          soundGrid.appendChild(button);
+        });
+      })
+      .catch(error => console.error('Error fetching sounds:', error));
+  </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "spnet",
+  "version": "1.0.0",
+  "description": "an open-source online sounboard program",
+  "main": "./src/main.js",
+  "scripts": {
+    "spnet": "node ./src/main.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@tropicbliss/symphonia": "^0.2.19",
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}
