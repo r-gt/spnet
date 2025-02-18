@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>🥑</title>
+  <title>Sound panel</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -22,7 +22,7 @@
   </style>
 </head>
 <body>
-  <h1>🥑</h1>
+  <h1>Sound panel</h1>
   <div class="sound-grid">
     <!-- Sound buttons will be generated here -->
   </div>
@@ -35,12 +35,13 @@
     fetch('/sounds')
       .then(response => response.json())
       .then(sounds => {
-        // Generate sound buttons for each sound file
+        
         sounds.forEach(sound => {
           const button = document.createElement('button');
           button.classList.add('sound-button');
           button.textContent = sound.name;
           button.addEventListener('click', () => {
+            
             // Play the sound when the button is clicked
             fetch(`/play/${sound.id}`)
               .then(response => response.text())
