@@ -11,25 +11,16 @@ const port = 3000;
 const soundDir = './sounds';
 
 
+
 function play(sound) {
   try {
-
-    
     const buf = fs.readFileSync(sound);
     symphonia.playFromBuf(buf, { speed: 1.0, volume: 1.0, isBlocking: false })
-  
   
   } catch (e) {
     console.log('Error playing audio: ', e)
   }  
 }
-
-
-
-// Set the directory where sound files are stored
-
-
-// Create a new Speaker instance
 
 
 // Read the directory contents and create routes for each sound file
@@ -49,7 +40,6 @@ fs.readdir(soundDir, (err, files) => {
 
       console.log(`Playing sound ${soundId}`);
 
-      // Play the sound file using node-speaker
       play(soundFile);
 
       res.send(`Playing sound ${soundId}`);
